@@ -5,15 +5,15 @@ description: RedmineでPOP before SMTP で通知メールを送るための設�
 date: "2012-01-05T10:00:00.000Z"
 ---
 
-Redmine は標準で POP before SMTP に対応していない？し，
+Redmine は標準で POP before SMTP に対応していない？し、
 
-ググってみたけど，結局綺麗にヒットするのがなかったので，やり方を保存．
+ググってみたけど、結局綺麗にヒットするのがなかったので、やり方を保存。
 
-解決方法は，”Mailer モデルを改変してメールを送る前に認証をする”
+解決方法は、”Mailer モデルを改変してメールを送る前に認証をする”
 
-具体的には，
+具体的には、
 
-まず，”app\models\Mailer.rb”の 19 行目～ 28 行目で接続先の SMTP サーバの設定を行う。
+まず、”app\models\Mailer.rb”の 19 行目～ 28 行目で接続先の SMTP サーバの設定を行う。
 
 ```ruby
 require 'net/pop'
@@ -27,10 +27,10 @@ ActionMailer::Base.smtp_settings = {
 }
 ```
 
-さらに，95 行目からの reminder メソッド内で POP 認証を行う。
+さらに、95 行目からの reminder メソッド内で POP 認証を行う。
 
 ### POP before SMTP の設定
 
 `Net::POP3.auth_only('pop-b.css.fujitsu.com', 110, 'ユーザ名', 'パスワード')``
 
-おわり．
+おわり。

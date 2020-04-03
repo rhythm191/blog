@@ -5,7 +5,7 @@ description: Play2.0と学ぶsqueryl (1) モデルの定義
 date: "2012-10-12T10:00:00.000Z"
 ---
 
-1.2.5 のときのチュートリアルにあった YABE(Yet Another Blog Engine)のモデル層の作成を通じて，
+1.2.5 のときのチュートリアルにあった YABE(Yet Another Blog Engine)のモデル層の作成を通じて、
 
 Scala の OR マッパーである squeryl の使い方をまとめておきます
 
@@ -15,14 +15,14 @@ Scala の OR マッパーである squeryl の使い方をまとめておきま�
 - Scala 1.9
 - squeryl 0.9.5-2
 
-なお，squeryl 0.9.6 以降では仕様が変わるようなので動かなくなりそうです．
+なお、squeryl 0.9.6 以降では仕様が変わるようなので動かなくなりそうです。
 
 (KeyedEntity がなくなり KeyedEntityDef で自動採番するらしい(()))
 セットアップ
 
-squeryl を使うために sbt のセットアップをします．
+squeryl を使うために sbt のセットアップをします。
 
-project/Build.scala に squeryl の依存関係を記述します．
+project/Build.scala に squeryl の依存関係を記述します。
 
 ```scala
 valappDependencies = Seq(
@@ -30,18 +30,18 @@ valappDependencies = Seq(
 )
 ```
 
-今回はインメモリの h2 データベースを利用します．
+今回はインメモリの h2 データベースを利用します。
 
-conf/application.conf に以下の記述をします．
+conf/application.conf に以下の記述をします。
 
 ```scala
 db.default.driver=org.h2.Driver
 db.default.url="jdbc:h2:mem:play"
 ```
 
-最後に squeryl データベースを接続の設定を行います．
+最後に squeryl データベースを接続の設定を行います。
 
-app/Global.scala を新規作成して，Play の起動時に DB の接続設定を行う処理をグローバルクラスに記述します．
+app/Global.scala を新規作成して、Play の起動時に DB の接続設定を行う処理をグローバルクラスに記述します。
 
 ```scala
 import org.squeryl.Session
@@ -74,9 +74,9 @@ object Global extends GlobalSettings {
 
 User エンティティの作成
 
-Play のチュートリアルと同様に User クラスを作成するところからブログエンジンのコーディングを始めます．
+Play のチュートリアルと同様に User クラスを作成するところからブログエンジンのコーディングを始めます。
 
-app/models/User.scala を作成し，以下のように記述します．
+app/models/User.scala を作成し、以下のように記述します。
 
 ```scala
 package models
@@ -91,11 +91,11 @@ case class User(email: String, password: String, fullname: String, isAdmin: Bool
 }
 ```
 
-各フィールド + プライマリーキーとなる id を定義します．(なんでか id に自動採番された値が入る．きもい)
+各フィールド + プライマリーキーとなる id を定義します。(なんでか id に自動採番された値が入る。きもい)
 
-このクラスとは別に，User クラスを squeryl が DB へマッピングを行うスキーマのオブジェクトを作成します．
+このクラスとは別に、User クラスを squeryl が DB へマッピングを行うスキーマのオブジェクトを作成します。
 
-app/models/YabeDB.scala を作成して以下のように記述します．
+app/models/YabeDB.scala を作成して以下のように記述します。
 
 ```scala
 package models
@@ -111,11 +111,11 @@ object YabeDB extends Schema {
 }
 ```
 
-user は DB のキーワードとなる可能性があるのでここでは”user_tb”というテーブルに User クラスをマッピングするように定義しました．
+user は DB のキーワードとなる可能性があるのでここでは”user_tb”というテーブルに User クラスをマッピングするように定義しました。
 
-DB の作成は evolution の機能を使った方がベターだろうが，ここでは作業を簡単にするために squeryl の機能を使って DB のテーブルを作成します．
+DB の作成は evolution の機能を使った方がベターだろうが、ここでは作業を簡単にするために squeryl の機能を使って DB のテーブルを作成します。
 
-そのために，app/Global.scala を以下のように変更します．
+そのために、app/Global.scala を以下のように変更します。
 
 ```scala
 import org.squeryl.Session
@@ -154,13 +154,13 @@ object Global extends GlobalSettings {
 }
 ```
 
-squeryl でトランザクションを利用したい場合は transaction メソッドを利用します．
+squeryl でトランザクションを利用したい場合は transaction メソッドを利用します。
 
-transaction メソッドに渡すブロック内に処理を書きます．
+transaction メソッドに渡すブロック内に処理を書きます。
 
-あと，チュートリアル通り，User クラスに関する最初のテストも作成します．
+あと、チュートリアル通り、User クラスに関する最初のテストも作成します。
 
-test/models/UserSpec.scala に以下のように記述します．
+test/models/UserSpec.scala に以下のように記述します。
 
 ```scala
 package models
@@ -192,7 +192,7 @@ class UserSpec extends Specification {
 }
 ```
 
-OneToMany などのレーションシップの関係は次回紹介します．
+OneToMany などのレーションシップの関係は次回紹介します。
 
 ### 参考文献
 

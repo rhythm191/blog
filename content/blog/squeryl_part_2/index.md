@@ -5,11 +5,11 @@ description: Play2.0と学ぶsqueryl (2) OneToManyの関係の定義
 date: "2012-10-18T10:00:00.000Z"
 ---
 
-前回，Play1.x のチュートリアルにそって YABE の User クラスを定義しました．
+前回、Play1.x のチュートリアルにそって YABE の User クラスを定義しました。
 
-今回は Post クラスの実装を通じて，squeryl での OneToMany の関連の定義の仕方を学びます．
+今回は Post クラスの実装を通じて、squeryl での OneToMany の関連の定義の仕方を学びます。
 
-まずは Post クラスを定義します．app/models/Post.scala を作成して以下のように記述します．
+まずは Post クラスを定義します。app/models/Post.scala を作成して以下のように記述します。
 
 ```scala
 package models
@@ -25,7 +25,7 @@ case class Post(title: String, postedAt: Date, content: String, author_id: Long 
 }
 ```
 
-スキーマのインスタンスである YabeDB.scala も修正します．
+スキーマのインスタンスである YabeDB.scala も修正します。
 
 ```scala
 package models
@@ -47,20 +47,20 @@ object YabeDB extends Schema {
 }
 ```
 
-on メソッドによってインデックスやユニークキー，DB の定義を細かく指定することができます．
+on メソッドによってインデックスやユニークキー、DB の定義を細かく指定することができます。
 
-ここでは，@Lob アノテーションを使っていた部分を dbType 関数を利用して、投稿の内容を保持する大きな文字列型データベースを使用します．
+ここでは、@Lob アノテーションを使っていた部分を dbType 関数を利用して、投稿の内容を保持する大きな文字列型データベースを使用します。
 OneToMany の関連
 
-User クラスと Post クラスの関連情報を定義します．
+User クラスと Post クラスの関連情報を定義します。
 
-それぞれの Post は 1 つの User によって所有され、各 User は複数の Post インスタンスを所有することができるという関連情報を持たせます．
+それぞれの Post は 1 つの User によって所有され、各 User は複数の Post インスタンスを所有することができるという関連情報を持たせます。
 
-squeryl では stateless な関連と stateful な関連を持つことができます．ここでは関連情報の定義の方法だけに注力するために stateless な関連の定義だけやります．
+squeryl では stateless な関連と stateful な関連を持つことができます。ここでは関連情報の定義の方法だけに注力するために stateless な関連の定義だけやります。
 
-stateless と stateful の違いは次回以降で解説します(すると思います)．
+stateless と stateful の違いは次回以降で解説します(すると思います)。
 
-まずはスキーマのインスタンスに関連情報を定義するために YabeDB.scala を修正します．
+まずはスキーマのインスタンスに関連情報を定義するために YabeDB.scala を修正します。
 
 ```scala
 package models
@@ -85,9 +85,9 @@ object YabeDB extends Schema {
 }
 ```
 
-スキーマのインスタンスに oneToManyRelation メソッドを利用して，インスタンス同士のどのフィールドによって関連付けを行うかを定義します．
+スキーマのインスタンスに oneToManyRelation メソッドを利用して、インスタンス同士のどのフィールドによって関連付けを行うかを定義します。
 
-User クラスと Post クラスからそれぞれの情報が取得できるようにフィールドを定義します．
+User クラスと Post クラスからそれぞれの情報が取得できるようにフィールドを定義します。
 
 ```scala
 package models
@@ -122,11 +122,11 @@ case class Post(title: String, postedAt: Date, content: String, author_id: Long 
 }
 ```
 
-もちろんテストも書きます．
+もちろんテストも書きます。
 
-User と Post との関連付けは associate メソッドを使います．
+User と Post との関連付けは associate メソッドを使います。
 
-associate メソッドを使うことにより，Post インスタンスへ User インスタンスの関連する id を設定できるとともに DB への保存も行われます．
+associate メソッドを使うことにより、Post インスタンスへ User インスタンスの関連する id を設定できるとともに DB への保存も行われます。
 
 ```scala
 package models
@@ -186,4 +186,4 @@ class PostSpec extends Specification {
 }
 ```
 
-次回は ManyToMany とか stateless, stateful な関係の違いとかをまとめる予定．
+次回は ManyToMany とか stateless, stateful な関係の違いとかをまとめる予定。

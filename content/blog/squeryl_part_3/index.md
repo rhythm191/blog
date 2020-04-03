@@ -5,15 +5,15 @@ description: Play2.0と学ぶsqueryl (3) ManyToMany
 date: "2012-10-23T10:00:00.000Z"
 ---
 
-前回，前々回と User クラス，Post クラス,を作成しました．
+前回、前々回と User クラス、Post クラス,を作成しました。
 
-今回はガイド 6 にある Comment クラスを作成することで ManyToMany の関連の定義の方法をまとめていきます．
+今回はガイド 6 にある Comment クラスを作成することで ManyToMany の関連の定義の方法をまとめていきます。
 
-ManyToMany では OneToMany の関連と異なり，Post クラスと Comment クラスとの関連を保持するクラスを生成する必要があります．
+ManyToMany では OneToMany の関連と異なり、Post クラスと Comment クラスとの関連を保持するクラスを生成する必要があります。
 
 それ以外はだいたい一緒
 
-まずは Tag クラスを定義します．app/models/Tag.scala を作成して以下のように記述します．
+まずは Tag クラスを定義します。app/models/Tag.scala を作成して以下のように記述します。
 
 ```scala
 package models
@@ -29,7 +29,7 @@ caseclass Tag(name: String) extends KeyedEntity[Long] with Ordered[Tag] {
 }
 ```
 
-次にスキーマのインスタンスにタグのテーブルの定義を行います．
+次にスキーマのインスタンスにタグのテーブルの定義を行います。
 
 ```scala
 object YabeDB extends Schema {
@@ -42,9 +42,9 @@ object YabeDB extends Schema {
   // 割愛
 ```
 
-Post クラスと Tag クラスの ManyToMany の関連を定義します．
+Post クラスと Tag クラスの ManyToMany の関連を定義します。
 
-ManyToMany の関連を定義するために，両者の id を保持する関連テーブルのクラス Post2TagAssociationsd を定義して，スキーマのインスタンスに ManyToMany の設定を追加します．
+ManyToMany の関連を定義するために、両者の id を保持する関連テーブルのクラス Post2TagAssociationsd を定義して、スキーマのインスタンスに ManyToMany の設定を追加します。
 
 ```scala
 class Post2TagAssociation(val post_id: Long, val tag_id: Long) extends KeyedEntity[CompositeKey2[Long, Long]] {
@@ -59,9 +59,9 @@ object YabeDB extends Schema {
   // 割愛
 ```
 
-遅延タグ生成のようなものが欲しいので，タグの取得は常に findOrCreateByName(String name)ファクトリメソッドを使うことにします．
+遅延タグ生成のようなものが欲しいので、タグの取得は常に findOrCreateByName(String name)ファクトリメソッドを使うことにします。
 
-これをコンパニオンオブジェクトに追加します．
+これをコンパニオンオブジェクトに追加します。
 
 ```scala
 object Tag {
@@ -76,11 +76,11 @@ object Tag {
 }
 ```
 
-いよいよ Post クラスに Tag クラスへの参照を追加します．単方向の関連にしたいので Post クラスにのみつけます．
+いよいよ Post クラスに Tag クラスへの参照を追加します。単方向の関連にしたいので Post クラスにのみつけます。
 
-ついでに．Post クラスにタグ付けを行うヘルパメソッド tagItWith(name: String)と
+ついでに。Post クラスにタグ付けを行うヘルパメソッド tagItWith(name: String)と
 
-指定したタグですべての投稿を検索するメソッドを追加します．
+指定したタグですべての投稿を検索するメソッドを追加します。
 
 ```scala
 case class Post(title: String, postedAt: Date, content: String, author_id: Long = 0) extends KeyedEntity[Long] {
@@ -109,7 +109,7 @@ object Post {
 }
 ```
 
-これらのテストを行う新しいテストケースを作成します．
+これらのテストを行う新しいテストケースを作成します。
 
 ```scala
 package models
@@ -156,4 +156,4 @@ class TagSpec extends Specification {
 }
 ```
 
-Comment クラスは犠牲になったのだ．．．
+Comment クラスは犠牲になったのだ。。。

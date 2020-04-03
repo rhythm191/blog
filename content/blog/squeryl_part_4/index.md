@@ -5,21 +5,21 @@ description: Play2.0と学ぶsqueryl (4) Statelessな関連とStatefulな関連�
 date: "2012-10-28T10:00:00.000Z"
 ---
 
-前回，前々回で squeryl での OneToMany や ManyToMany の関連について取り上げました．
+前回、前々回で squeryl での OneToMany や ManyToMany の関連について取り上げました。
 
-今回は関連情報の取得方法に関わる話，stateless な関連と stateful な関連を取り上げます．
+今回は関連情報の取得方法に関わる話、stateless な関連と stateful な関連を取り上げます。
 
-stateless な関連と stateful な関連では関連情報を参照する際，具体的には前々回の User クラスに posts フィールドにアクセスする際，そのときの挙動が異なります．
+stateless な関連と stateful な関連では関連情報を参照する際、具体的には前々回の User クラスに posts フィールドにアクセスする際、そのときの挙動が異なります。
 
-stateless な関連ではフィールドにアクセスした際に毎回クエリが発行され DB へのアクセスが発生します．
+stateless な関連ではフィールドにアクセスした際に毎回クエリが発行され DB へのアクセスが発生します。
 
-一方，stateful な関連では初めてフィールドにアクセスした際に DB からの取得し，それ以降，その状態を維持します．
+一方、stateful な関連では初めてフィールドにアクセスした際に DB からの取得し、それ以降、その状態を維持します。
 
-stateful な関連は同じフィールドにアクセスする度に DB アクセスが発生しないが，逆に明示的にリフレッシュしないと DB の状態が反映されません．
+stateful な関連は同じフィールドにアクセスする度に DB アクセスが発生しないが、逆に明示的にリフレッシュしないと DB の状態が反映されません。
 
-具体的なプログラムで見ていきましょう．
+具体的なプログラムで見ていきましょう。
 
-まず，stateless な関連をもつ User クラスと Post クラスを定義していきます．
+まず、stateless な関連をもつ User クラスと Post クラスを定義していきます。
 
 ```scala
 package models
@@ -50,7 +50,7 @@ object YabeDB extends Schema {
 }
 ```
 
-関連情報を取得する検証を行います．
+関連情報を取得する検証を行います。
 
 ```scala
 package models
@@ -98,13 +98,13 @@ class PostSpec extends Specification {
 }
 ```
 
-stateless な関連では posts フィールドにアクセスした際に必ずクエリが発行されるので，DB の状態が必ず反映される．
+stateless な関連では posts フィールドにアクセスした際に必ずクエリが発行されるので、DB の状態が必ず反映される。
 
-そのため，2 つめの Post クラスをインサートした後も，posts フィールドに DB の状態が反映される．
+そのため、2 つめの Post クラスをインサートした後も、posts フィールドに DB の状態が反映される。
 
-続いて Stateful な関連を定義します．
+続いて Stateful な関連を定義します。
 
-stateful な関連では left ではなく，leftStateful を使って定義します．
+stateful な関連では left ではなく、leftStateful を使って定義します。
 
 ```scala
 package models
@@ -123,7 +123,7 @@ case class User(email: String, password: String, fullname: String, isAdmin: Bool
 }
 ```
 
-検証用のテストを書いてみます．
+検証用のテストを書いてみます。
 
 ```scala
 package models
@@ -163,7 +163,7 @@ class PostSpec extends Specification {
           YabeDB.posts.size must beEqualTo(2)
           user.posts.size must beEqualTo(1)
 
-          // 明示的にrefreshをした場合，DBの状態を再取得してフィールドに反映される．
+          // 明示的にrefreshをした場合、DBの状態を再取得してフィールドに反映される。
           user.posts.refresh
 
           YabeDB.posts.size must beEqualTo(2)
@@ -177,8 +177,8 @@ class PostSpec extends Specification {
 }
 ```
 
-stateful な関連の方は初めて posts フィールドにアクセスしたときの DB の状態を保持していて，その後に DB が変更されても posts フィールドの状態が保持されていることが分かります．
+stateful な関連の方は初めて posts フィールドにアクセスしたときの DB の状態を保持していて、その後に DB が変更されても posts フィールドの状態が保持されていることが分かります。
 
-その後，refresh メソッドを呼び出して明示的に DB の状態を再取得した場合，posts フィールドに DB の状態が反映されます．
+その後、refresh メソッドを呼び出して明示的に DB の状態を再取得した場合、posts フィールドに DB の状態が反映されます。
 
-以上．
+以上。
