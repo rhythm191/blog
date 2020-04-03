@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Rhyztech Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `rhythm191`,
+      summary: `web engineer in Tokyo.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Rhyztech engineer's blog. writing about tech, design, game...`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `rhythm191`,
     },
   },
   plugins: [
@@ -53,15 +53,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-40723403-2`,
       },
     },
     `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `Rhyztech Blog`,
+        short_name: `Rhyztech`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,
