@@ -1,7 +1,7 @@
 ---
 title: SassのBuilt-in modulesで遊んでみた
 category: tech
-description: "sass:math"モジュールのrandom関数を使ってアニメーションを作ってみました
+description: sass:mathモジュールのrandom関数を使ってアニメーションを作ってみました
 date: "2020-01-18T10:00:00.000Z"
 ---
 
