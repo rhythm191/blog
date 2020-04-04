@@ -39,7 +39,7 @@ const navStyle = css`
 
     &:hover,
     &:focus {
-      color: #e9e9e9;
+      color: #00bfa5;
       text-decoration: none;
     }
 
@@ -50,7 +50,7 @@ const navStyle = css`
       left: 0;
       width: 0;
       height: 2px;
-      background: #fff;
+      background: #00bfa5;
 
       transition: width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     }
