@@ -17,6 +17,9 @@ Wordpress2016.overrideThemeStyles = () => {
         "sans-serif",
       ].join(","),
     },
+    "ul,ol": {
+      marginLeft: "1.75rem",
+    },
   }
 }
 
