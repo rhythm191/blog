@@ -81,9 +81,9 @@ exports.createPages = async ({ graphql, actions }) => {
   categories.forEach(async category => {
     const categoryResult = await graphql(
       `
-        query categoryQuery {
+        query categoryQuery($category: String!) {
           allMarkdownRemark(
-            filter: { frontmatter: { category: { eq: $cateogry } } }
+            filter: { frontmatter: { category: { eq: $category } } }
             sort: { fields: [frontmatter___date], order: DESC }
             limit: 1000
           ) {
