@@ -6,10 +6,24 @@ import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 
 const headerStyle = css`
+  position: relative;
   width: 100%;
+  margin-bottom: 5px;
   padding: ${rhythm(1)} 0;
   color: #fff;
   background: #1c1c1c;
+  box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.3);
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    height: 4px;
+    width: 100%;
+    background: #ff1744;
+    z-index: -1;
+  }
 
   h1,
   h3 {
@@ -75,12 +89,11 @@ const Layout = ({ location, title, children }) => {
         <Categories></Categories>
       </header>
       <main
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
+        css={css`
+          margin: 0 auto;
+          max-width: ${rhythm(24)};
+          padding: 0 ${rhythm(3 / 4)} ${rhythm(1.5)};
+        `}
       >
         {children}
       </main>
