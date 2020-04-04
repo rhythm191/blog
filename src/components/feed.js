@@ -17,8 +17,11 @@ const feedStyle = css`
   }
 
   .meta {
-    small {
+    time {
       margin-right: 1rem;
+    }
+    a {
+      color: inherit;
     }
   }
 `
@@ -33,8 +36,10 @@ const Feed = ({ title, slug, date, category, excerpt }) => {
           </Link>
         </h3>
         <div className="meta">
-          <small>{date}</small>
-          <small>{category}</small>
+          <time datetime={date}>{date}</time>
+          <span>
+            <Link to={`/categories/${category}`}>{category}</Link>
+          </span>
         </div>
       </header>
       <section>
