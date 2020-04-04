@@ -22,20 +22,20 @@ C-x C-f からファイルを開く場合、通常ならポインタがミニバ
 ファイル名の入力は基本的には記憶に頼る物で、TAB による補完機能も前方一致のみだった。
 helm ではカレントディレクトリのファイルが候補として表示される。
 
-![emacs1]({{site.baseurl}}/images/emacs_helm/emacs1.jpg)
+![emacs1](./emacs1.jpg)
 
 ここで”zsh”と入力することで部分一致によるマッチングが行われ、候補となるファイルが絞り込まれる。
 
-![emacs2]({{site.baseurl}}/images/emacs_helm/emacs2.jpg)
+![emacs2](./emacs2.jpg)
 
 このままファイル名を入力してしまってもいいのだが、
 C-n や C-p によって対象を選択することができる。
 
-![emacs3]({{site.baseurl}}/images/emacs_helm/emacs3.jpg)
+![emacs3](./emacs3.jpg)
 
 開きたいファイルを選択したら RET で開くことができる。
 
-![emacs4]({{site.baseurl}}/images/emacs_helm/emacs4.jpg)
+![emacs4](./emacs4.jpg)
 
 別の例も紹介しよう。
 
@@ -43,22 +43,22 @@ C-n や C-p によって対象を選択することができる。
 helm では先ほどのファイル操作と同様の操作方法でペーストを実行できる。実際に見てみよう。
 M-y を押すとキルリングの候補と現在のパターンマッチが表示される。
 
-![emacs5]({{site.baseurl}}/images/emacs_helm/emacs5.jpg)
+![emacs5](./emacs5.jpg)
 
 ここで”hoge”と入力することで候補となるテキストが絞り込まれる
 
-![emacs6]({{site.baseurl}}/images/emacs_helm/emacs6.jpg)
+![emacs6](./emacs6.jpg)
 
 そして RET すれば貼付けられるのだが、TAB を押してみよう。
 TAB を押すことでこのテキストに対して行えるアクションが表示される。
 ここでは張り付け(ヤンク)と削除のアクションが用意されている。
 
-![emacs7]({{site.baseurl}}/images/emacs_helm/emacs7.jpg)
+![emacs7](./emacs7.jpg)
 
 RET では最も利用されるアクション(この場合は張り付け)がデフォルトとして割り当てられていたが、複数のアクションが用意されていることもある。
 このアクションの選択画面でも入力による絞り込みや C-n や C-p による移動ができる。
 ここでは削除を選択してキルリングから削除してしまおう。サヨナラ！
 
-![emacs8]({{site.baseurl}}/images/emacs_helm/emacs8.jpg)
+![emacs8](./emacs8.jpg)
 
 この 絞り込み -> 選択 -> アクション の操作性を様々な機能に提供するのが helm の本質である。

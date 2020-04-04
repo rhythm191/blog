@@ -18,11 +18,11 @@ alfy を使った Alfred workflow を作る手順は次のとおりです。
 
 1. Alfred workflow の画面でブランクの workflow を作成します。(左下のプラスボタンね)
 
-![alfred-step1-1]({{site.baseurl}}/images/alfred-workflow/alfred-step1-1.png)
+![alfred-step1-1](./alfred-step1-1.png)
 
 名前とかは適当に決めれば良い。
 
-![alfred-step2-1]({{site.baseurl}}/images/alfred-workflow/alfred-step1-3.png)
+![alfred-step2-1](./alfred-step1-3.png)
 
 2. `Script Filter`を追加する
 
@@ -32,7 +32,7 @@ alfy を使った Alfred workflow を作る手順は次のとおりです。
 ./node_modules/.bin/run-node index.js "$1"
 ```
 
-![alfred-step2-1]({{site.baseurl}}/images/alfred-workflow/alfred-step2-1.png)
+![alfred-step2-1](./alfred-step2-1.png)
 
 3. keyword には実行する際のコマンドを設定します。
 
