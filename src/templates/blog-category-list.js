@@ -4,7 +4,6 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Feed from "../components/feed"
-import { rhythm } from "../utils/typography"
 
 const BlogList = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
