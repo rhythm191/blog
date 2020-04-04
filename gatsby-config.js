@@ -10,6 +10,7 @@ module.exports = {
     social: {
       twitter: `rhythm191`,
     },
+    categories: ["tech", "design", "game", "column"],
   },
   plugins: [
     {

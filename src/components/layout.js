@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Categories from "./categories"
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -50,6 +51,7 @@ const Layout = ({ location, title, children }) => {
   return (
     <div>
       <header>{header}</header>
+      <Categories></Categories>
       <main
         style={{
           marginLeft: `auto`,
