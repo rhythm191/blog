@@ -6,15 +6,16 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm } from "../utils/typography"
 
-const BlogIndex = ({ data, location }) => {
+const BlogList = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
+  const { previous, next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Rhyztech blog" />
       <Bio />
-      {posts.slice(0, 10).map(({ node }) => {
+      {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
@@ -44,27 +45,50 @@ const BlogIndex = ({ data, location }) => {
         )
       })}
 
-      {posts.length > 10 && (
-        <nav>
-          <Link style={{ boxShadow: `none` }} to="/pages/2">
-            Next >>
-          </Link>
-        </nav>
-      )}
+      <nav>
+        <ul
+          style={{
+            display: `flex`,
+            flexWrap: `wrap`,
+            justifyContent: `space-between`,
+            listStyle: `none`,
+            padding: 0,
+          }}
+        >
+          <li>
+            {previous && (
+              <Link to={previous} rel="prev">
+                {"<< Prev"}
+              </Link>
+            )}
+          </li>
+          <li>
+            {next && (
+              <Link to={next} rel="next">
+                {"Next >>"}
+              </Link>
+            )}
+          </li>
+        </ul>
+      </nav>
     </Layout>
   )
 }
 
-export default BlogIndex
+export default BlogList
 
-export const pageQuery = graphql`
-  query {
+export const pageListQuery = graphql`
+  query pageListQuery($skip: Int!, $limit: Int!) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: $limit
+      skip: $skip
+    ) {
       edges {
         node {
           excerpt
