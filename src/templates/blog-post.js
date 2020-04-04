@@ -5,7 +5,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 
 import { css } from "@emotion/core"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 const articleStyle = css`
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
