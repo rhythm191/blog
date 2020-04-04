@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Rhyztech Blog`,
+    title: `Rhyztech blog`,
     author: {
       name: `rhythm191`,
       summary: `web engineer in Tokyo.`,
@@ -77,6 +77,7 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    `gatsby-plugin-emotion`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

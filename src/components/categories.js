@@ -21,7 +21,7 @@ const Categories = () => {
   const categories = data.site.siteMetadata.categories
 
   return (
-    <div
+    <nav
       style={{
         display: `flex`,
         marginBottom: rhythm(2.5),
@@ -44,7 +44,7 @@ const Categories = () => {
           )
         })}
       </ul>
-    </div>
+    </nav>
   )
 }
 
