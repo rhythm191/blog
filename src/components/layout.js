@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import Categories from "./categories"
 
 import { css } from "@emotion/core"
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 const headerStyle = css`
   width: 100%;

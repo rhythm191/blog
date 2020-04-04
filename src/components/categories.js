@@ -6,7 +6,60 @@ import React from "react"
 import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 
+import { css } from "@emotion/core"
+
 import { rhythm } from "../utils/typography"
+
+const navStyle = css`
+  width: 100%;
+  max-width: ${rhythm(24)};
+  margin: 0 auto;
+  color: #fff;
+
+  ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    li {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  a {
+    position: relative;
+    padding-bottom: 4px;
+    color: inherit;
+    text-decoration: none;
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      color: #e9e9e9;
+      text-decoration: none;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #fff;
+
+      transition: width 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+`
 
 const Categories = () => {
   const data = useStaticQuery(graphql`
@@ -21,21 +74,8 @@ const Categories = () => {
   const categories = data.site.siteMetadata.categories
 
   return (
-    <nav
-      style={{
-        display: `flex`,
-        marginBottom: rhythm(2.5),
-      }}
-    >
-      <ul
-        style={{
-          display: `flex`,
-          width: "100%",
-          listStyle: "none",
-          justifyContent: "space-evenly",
-          marginBottom: rhythm(2.5),
-        }}
-      >
+    <nav css={navStyle}>
+      <ul>
         {categories.map(category => {
           return (
             <li key={category}>
