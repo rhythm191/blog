@@ -3,6 +3,7 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Feed from "../components/feed"
 import { rhythm } from "../utils/typography"
 
 const BlogList = ({ data, pageContext, location }) => {
@@ -16,30 +17,14 @@ const BlogList = ({ data, pageContext, location }) => {
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <div>
-                <small>{node.frontmatter.date}</small>
-                <small>{node.frontmatter.category}</small>
-              </div>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
+          <Feed
+            key={node.fields.slug}
+            title={title}
+            slug={node.fields.slug}
+            date={node.frontmatter.date}
+            category={node.frontmatter.category}
+            excerpt={node.frontmatter.description || node.excerpt}
+          ></Feed>
         )
       })}
 
