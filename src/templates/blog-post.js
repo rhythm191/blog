@@ -3,7 +3,40 @@ import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+
+import { css } from "@emotion/core"
 import { rhythm, scale } from "../utils/typography"
+
+const articleStyle = css`
+  border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
+  margin-bottom: 2rem;
+
+  h1 {
+    margin: ${rhythm(2)} auto ${rhythm(1 / 4)};
+  }
+
+  .meta {
+    margin: 0 auto 1.75rem;
+    color: #3c3c3c;
+    font-size: 0.8rem;
+    line-height: 1.75rem;
+    text-align: right;
+
+    time {
+      margin-right: 1rem;
+    }
+  }
+`
+
+const navStyle = css`
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+  }
+`
 
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
@@ -16,44 +49,21 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />
-      <article>
+      <article css={articleStyle}>
         <header>
-          <h1
-            style={{
-              marginTop: rhythm(1),
-              marginBottom: 0,
-            }}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <p
-            style={{
-              ...scale(-1 / 5),
-              display: `block`,
-              marginBottom: rhythm(1),
-            }}
-          >
-            {post.frontmatter.date}
+          <h1>{post.frontmatter.title}</h1>
+          <p className="meta">
+            <time datetime={post.frontmatter.date}>
+              {post.frontmatter.date}
+            </time>
+            <span>{post.frontmatter.category}</span>
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
       </article>
 
-      <nav>
-        <ul
-          style={{
-            display: `flex`,
-            flexWrap: `wrap`,
-            justifyContent: `space-between`,
-            listStyle: `none`,
-            padding: 0,
-          }}
-        >
+      <nav css={navStyle}>
+        <ul>
           <li>
             {previous && (
               <Link to={previous.fields.slug} rel="prev">
@@ -89,8 +99,9 @@ export const pageQuery = graphql`
       html
       frontmatter {
         title
-        date(formatString: "MMMM DD, YYYY")
+        date(formatString: "YYYY-MM-DD")
         description
+        category
       }
     }
   }
