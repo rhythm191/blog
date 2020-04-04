@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Helmet from "react-helmet"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -30,6 +31,18 @@ const articleStyle = css`
       color: inherit;
     }
   }
+
+  .sns-buttons {
+    margin: 3rem 0 1rem;
+
+    iframe,
+    > div {
+      margin: 0 1rem 0 0;
+    }
+    .fb_iframe_widget > span {
+      vertical-align: baseline !important;
+    }
+  }
 `
 
 const navStyle = css`
@@ -50,6 +63,25 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
+      <Helmet>
+        <script
+          async
+          src="https://platform.twitter.com/widgets.js"
+          charset="utf-8"
+        ></script>
+        <script
+          async
+          defer
+          crossorigin="anonymous"
+          src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v5.0"
+        ></script>
+        <script
+          async
+          type="text/javascript"
+          src="https://b.st-hatena.com/js/bookmark_button.js"
+          charset="utf-8"
+        ></script>
+      </Helmet>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -69,6 +101,41 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
+
+        <aside className="sns-buttons">
+          <a
+            href="https://twitter.com/share?ref_src=twsrc%5Etfw"
+            class="twitter-share-button"
+            data-show-count="false"
+          >
+            Tweet
+          </a>
+          <div
+            class="fb-like"
+            data-href={window.location}
+            data-layout="button"
+            data-action="like"
+            data-size="small"
+            data-share="false"
+          ></div>
+          <a
+            href="https://b.hatena.ne.jp/entry/"
+            class="hatena-bookmark-button"
+            data-hatena-bookmark-layout="basic-label"
+            data-hatena-bookmark-lang="ja"
+            title="このエントリーをはてなブックマークに追加"
+          >
+            <img
+              src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
+              alt="このエントリーをはてなブックマークに追加"
+              width="20"
+              height="20"
+              style={{
+                border: `none`,
+              }}
+            />
+          </a>
+        </aside>
       </article>
 
       <nav css={navStyle}>
