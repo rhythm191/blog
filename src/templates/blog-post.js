@@ -25,6 +25,10 @@ const articleStyle = css`
     time {
       margin-right: 1rem;
     }
+
+    a {
+      color: inherit;
+    }
   }
 `
 
@@ -56,7 +60,11 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
             <time datetime={post.frontmatter.date}>
               {post.frontmatter.date}
             </time>
-            <span>{post.frontmatter.category}</span>
+            <span>
+              <Link to={`/categories/${post.frontmatter.category}`}>
+                {post.frontmatter.category}
+              </Link>
+            </span>
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
