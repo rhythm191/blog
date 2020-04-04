@@ -28,9 +28,22 @@ const BlogIndex = ({ data, location }) => {
 
       {posts.length > 10 && (
         <nav>
-          <Link style={{ boxShadow: `none` }} to="/pages/2">
-            Next >>
-          </Link>
+          <ul
+            style={{
+              display: `flex`,
+              flexWrap: `wrap`,
+              justifyContent: `space-between`,
+              listStyle: `none`,
+              padding: 0,
+            }}
+          >
+            <li></li>
+            <li>
+              <Link style={{ boxShadow: `none` }} to="/pages/2">
+                Next >>
+              </Link>
+            </li>
+          </ul>
         </nav>
       )}
     </Layout>
