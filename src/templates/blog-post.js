@@ -38,6 +38,7 @@ const navStyle = css`
     flex-wrap: wrap;
     justify-content: space-between;
     list-style: none;
+    margin: 0 0 1.75rem;
     padding: 0;
   }
 `
