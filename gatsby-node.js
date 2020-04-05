@@ -105,7 +105,7 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     )
 
-    const categoryPosts = result.data.allMarkdownRemark.edges
+    const categoryPosts = categoryResult.data.allMarkdownRemark.edges
     const postsPerPage = 10
     const numPages = Math.ceil(categoryPosts.length / postsPerPage)
     Array.from({ length: numPages }).forEach((_, i) => {
@@ -115,8 +115,7 @@ exports.createPages = async ({ graphql, actions }) => {
           : i === 1
           ? `/categories/${category}`
           : `/categories/${category}/${i}`
-      const next =
-        i + 1 === numPages ? null : `/categories/${category}/${i + 2}`
+      const next = i + 1 >= numPages ? null : `/categories/${category}/${i + 2}`
 
       createPage({
         path:
