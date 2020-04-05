@@ -73,7 +73,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           async
           defer
           crossorigin="anonymous"
-          src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version==v6.0"
+          src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v6.0"
         ></script>
         <script
           async
