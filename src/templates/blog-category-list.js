@@ -1,9 +1,21 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import { css } from "@emotion/core"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Feed from "../components/feed"
+
+const navStyle = css`
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0 0 1.75rem;
+    padding: 0;
+  }
+`
 
 const BlogList = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -27,7 +39,7 @@ const BlogList = ({ data, pageContext, location }) => {
         )
       })}
 
-      <nav>
+      <nav css={navStyle}>
         <ul
           style={{
             display: `flex`,
