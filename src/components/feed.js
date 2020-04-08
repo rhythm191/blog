@@ -36,7 +36,7 @@ const Feed = ({ title, slug, date, category, excerpt }) => {
           </Link>
         </h3>
         <div className="meta">
-          <time datetime={date}>{date}</time>
+          <time dateTime={date}>{date}</time>
           <span>
             <Link to={`/categories/${category}`}>{category}</Link>
           </span>

@@ -1,9 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-import Helmet from "react-helmet"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import ShareButtons from "../components/share-buttons"
 
 import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
@@ -31,18 +31,6 @@ const articleStyle = css`
       color: inherit;
     }
   }
-
-  .sns-buttons {
-    margin: 3rem 0 1rem;
-
-    iframe,
-    > div {
-      margin: 0 1rem 0 0;
-    }
-    .fb_iframe_widget > span {
-      vertical-align: baseline !important;
-    }
-  }
 `
 
 const navStyle = css`
@@ -59,29 +47,11 @@ const navStyle = css`
 const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
+  const siteUrl = data.site.siteMetadata.siteUrl
   const { previous, next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Helmet>
-        <script
-          async
-          src="https://platform.twitter.com/widgets.js"
-          charset="utf-8"
-        ></script>
-        <script
-          async
-          defer
-          crossorigin="anonymous"
-          src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v6.0"
-        ></script>
-        <script
-          async
-          type="text/javascript"
-          src="https://b.st-hatena.com/js/bookmark_button.js"
-          charset="utf-8"
-        ></script>
-      </Helmet>
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
@@ -90,7 +60,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
         <header>
           <h1>{post.frontmatter.title}</h1>
           <p className="meta">
-            <time datetime={post.frontmatter.date}>
+            <time dateTime={post.frontmatter.date}>
               {post.frontmatter.date}
             </time>
             <span>
@@ -101,40 +71,10 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
-
-        <aside className="sns-buttons">
-          <a
-            href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-            class="twitter-share-button"
-            data-show-count="false"
-          >
-            Tweet
-          </a>
-          <div
-            class="fb-like"
-            data-layout="button"
-            data-action="like"
-            data-size="small"
-            data-share="false"
-          ></div>
-          <a
-            href="https://b.hatena.ne.jp/entry/"
-            class="hatena-bookmark-button"
-            data-hatena-bookmark-layout="basic-label"
-            data-hatena-bookmark-lang="ja"
-            title="このエントリーをはてなブックマークに追加"
-          >
-            <img
-              src="https://b.st-hatena.com/images/v4/public/entry-button/button-only@2x.png"
-              alt="このエントリーをはてなブックマークに追加"
-              width="20"
-              height="20"
-              style={{
-                border: `none`,
-              }}
-            />
-          </a>
-        </aside>
+        <ShareButtons
+          text={encodeURI(`${post.frontmatter.title} | ${siteTitle}`)}
+          url={`${siteUrl}${location.pathname}`}
+        />
       </article>
 
       <nav css={navStyle}>
@@ -166,6 +106,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        siteUrl
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
