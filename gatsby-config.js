@@ -6,7 +6,7 @@ module.exports = {
       summary: `web engineer in Tokyo.`,
     },
     description: `Rhyztech engineer's blog. writing about tech, design, game...`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://blog.rhyztech.net/`,
     social: {
       twitter: `rhythm191`,
     },
@@ -81,5 +81,6 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    `gatsby-plugin-sitemap`,
   ],
 }
