@@ -20,11 +20,11 @@ const navStyle = css`
 const BlogList = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
-  const { previous, next } = pageContext
+  const { category, currentPage, previous, next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title="Rhyztech blog" />
+      <SEO title={`${category} page ${currentPage}`} />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
