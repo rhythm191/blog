@@ -3,7 +3,6 @@
  */
 
 import React from "react"
-import Helmet from "react-helmet"
 
 import { css } from "@emotion/core"
 
@@ -125,6 +124,7 @@ const ShareButtons = ({ url, text }) => {
         href={`https://twitter.com/share?url=${url}&text=${text}`}
         className="sns-link twitter"
         target="_blank"
+        rel="noopener noreferrer"
       >
         <i class="icon-twitter"></i>
       </a>
@@ -132,6 +132,7 @@ const ShareButtons = ({ url, text }) => {
         href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
         className="sns-link facebook"
         target="_blank"
+        rel="noopener noreferrer"
       >
         <i class="icon-facebook"></i>
       </a>
@@ -139,6 +140,7 @@ const ShareButtons = ({ url, text }) => {
         href={`http://b.hatena.ne.jp/entry/${url}`}
         className="sns-link hatena"
         target="_blank"
+        rel="noopener noreferrer"
       >
         B!
       </a>
