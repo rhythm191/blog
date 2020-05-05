@@ -11,6 +11,7 @@ module.exports = {
       twitter: `rhythm191`,
     },
     categories: ["tech", "design", "game", "column"],
+    googleSiteVerification: "BRJj_dard5y_F7XJG830_Wyo9f3npeybkl0wcG5z2tY",
   },
   plugins: [
     {

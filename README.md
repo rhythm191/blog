@@ -3,7 +3,7 @@
 </h1>
 
 Rhyztech blog です。Gatsby によって作られています。
-[gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog) を使っています。えええええええええ
+[gatsby-starter-blog](https://github.com/gatsbyjs/gatsby-starter-blog) を使っています。
 
 ## 🚀 Quick start
 

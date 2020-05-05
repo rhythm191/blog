@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Feed from "../components/feed"
+import GoogleSearchConsole from "../components/google-search-console"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
@@ -12,6 +13,7 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="Rhyztech blog" />
+      <GoogleSearchConsole />
       {posts.slice(0, 10).map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
