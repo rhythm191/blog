@@ -28,7 +28,7 @@ message Request {
 }
 ```
 
-サーバーが `is_active` を削除してしまった場合、
+サーバーが `is_active` を削除して、`description` を追加した場合、
 
 ```
 message Request {
