@@ -1,7 +1,7 @@
 ---
-title: Dependabot v2について
+title: Dependabot v2と自動マージについて
 category: tech
-description: Dependabot v2について調べました
+description: Dependabot v2と自動マージの方法について調べました
 date: "2020-08-03T10:00:00.000Z"
 ---
 
@@ -14,8 +14,7 @@ Dependabot は依存ライブラリのアップデートを監視し、自動的
 Githubネイティブになったことで、GithubのInsightsにDepdendabotのステータスが表示されるようになりました。
 ただし、バージョン１からいくつか機能削除が行われています。
 例えば、`dependency_type` でproduction用の依存関係とdevelopment用の依存関係を分けて記述できていましたが、バージョン２では使えません。
-また、プルリクエストを自動でマージする機能も削除されています。
-この記事は2020/08に書いているので今後機能追加されるかもしれません。
+また、プルリクエストを自動でマージする機能も削除されています。後述する Mergery と組み合わせて自動マージすることができます。
 
 
 ## 設定
@@ -48,3 +47,30 @@ updates:
       interval: "weekly"
 
 ```
+
+
+## 自動マージの設定
+
+dependabot v2には自動マージの機能がありませんが、[Mergery](https://github.com/apps/mergery) と組み合わせることで自動マージすることができます。
+
+手順は次の２つです。
+
+1. [Mergery](https://github.com/apps/mergery) をインストールする。
+2. dependabotでプルリクを作るときに `automerge` のラベルを追加されるようにする
+
+```
+version: 2
+updates:
+  # npm のバージョン更新を有効にする
+  - package-ecosystem: "npm"
+    # 「root」ディレクトリで「package.json」と「lock」ファイルを探す
+    directory: "/"
+    # npm レジストリの更新を毎日（平日）チェックする
+    schedule:
+      interval: "daily"
+    labels:
+      - "dependencies"
+      - "automerge"
+
+```
+
