@@ -8,6 +8,8 @@ date: "2020-11-03T10:00:00.000Z"
 Slackのスラッシュコマンドを実装する為には、スラッシュコマンドを実行した際のリクエストを処理するサーバーが必要になってきますが、
 それを [https://www.serverless.com/](Serverless framework) を使って簡単に作る方法を解説します。
 
+今回作ったプログラムはここで公開しています。
+https://github.com/rhythm191/serverless-simple-slack
 
 今回作る構成は Node.jsを使い、AWSのAPI GatewayとLambdaを組み合わせた構成になっています。
 
