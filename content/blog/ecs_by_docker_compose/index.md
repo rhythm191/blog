@@ -40,7 +40,7 @@ docker context use wordpress-dev
 ## ステップ３ - wordpress用のDockerファイルを用意する。
 
 wordpress用のDockerファイルを用意します。
-wordpressのイメージは私がカスタムしたものを使っていますが、(標準のもの)[https://hub.docker.com/_/wordpress]を使っても良いです。
+wordpressのイメージは私がカスタムしたものを使っていますが、[標準のもの](https://hub.docker.com/_/wordpress)を使っても良いです。
 ただし、標準のものはファイルのアップロード制限が厳しく、テーマがアップロードできなかったのでカスタムしたものを使用しました。
 
 ```
