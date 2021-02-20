@@ -1,5 +1,6 @@
 name: Node CI
-
+env:
+  CI: true
 on: [push]
 
 jobs:
@@ -16,16 +17,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Cache dependencies
-        uses: actions/cache@v1
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-      - name: yarn install, build
-        run: |
-          yarn install --frozen-lockfile
-          yarn build
-        env:
-          CI: true
+      - name: install
+        run: npm ci
+      - name: build
+        run: npm run build
