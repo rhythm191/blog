@@ -126,7 +126,7 @@ const ShareButtons = ({ url, text }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i class="icon-twitter"></i>
+        <i className="icon-twitter"></i>
       </a>
       <a
         href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
@@ -134,7 +134,7 @@ const ShareButtons = ({ url, text }) => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <i class="icon-facebook"></i>
+        <i className="icon-facebook"></i>
       </a>
       <a
         href={`http://b.hatena.ne.jp/entry/${url}`}
