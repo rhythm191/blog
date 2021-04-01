@@ -91,7 +91,7 @@ const Layout = ({ location, title, children }) => {
       <main
         css={css`
           margin: 0 auto;
-          max-width: ${rhythm(24)};
+          max-width: ${rhythm(28)};
           padding: 0 ${rhythm(3 / 4)} ${rhythm(1.5)};
         `}
       >
