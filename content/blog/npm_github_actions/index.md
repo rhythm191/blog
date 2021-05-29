@@ -2,7 +2,7 @@
 title: package.jsonのバージョンからnpmパッケージを生成するGitHub Actions
 category: tech
 description: package.jsonのversionに書かれたバージョン番号をみて、新しくなっていたらnpmパッケージやgitタグ、リリースノートを生成するGitHub Actionsです。
-date: "2021-05-13T10:00:00.000Z"
+date: "2021-05-29T10:00:00.000Z"
 ---
 
 package.jsonのversionに書かれたバージョン番号をみて、新しくなっていたらnpmパッケージやgitタグ、リリースノートを生成するGitHub Actionsです。
