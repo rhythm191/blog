@@ -1,9 +1,9 @@
-import React from "react"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react"
 import { Link, graphql } from "gatsby"
-import { css } from "@emotion/core"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import Feed from "../components/feed"
 
 const navStyle = css`
@@ -24,7 +24,7 @@ const BlogList = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO title={`${category} page ${currentPage}`} />
+      <Seo title={`${category} page ${currentPage}`} />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (

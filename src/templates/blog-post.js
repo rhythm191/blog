@@ -1,11 +1,11 @@
-import React from "react"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react"
 import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Seo from "../components/seo"
 import ShareButtons from "../components/share-buttons"
 
-import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 
 const articleStyle = css`
@@ -52,7 +52,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
+      <Seo
         title={post.frontmatter.title}
         description={post.frontmatter.description || post.excerpt}
       />

@@ -1,8 +1,8 @@
-import React from "react"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react"
 import { Link } from "gatsby"
 import Categories from "./categories"
 
-import { css } from "@emotion/core"
 import { rhythm } from "../utils/typography"
 
 const headerStyle = css`

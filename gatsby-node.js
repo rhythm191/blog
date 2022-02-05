@@ -78,7 +78,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // create category page with paging
   const categories = result.data.site.siteMetadata.categories
 
-  categories.forEach(async category => {
+  const promises = categories.map(async (category) => {
     const categoryResult = await graphql(
       `
         query categoryQuery($category: String!) {
@@ -108,33 +108,40 @@ exports.createPages = async ({ graphql, actions }) => {
     const categoryPosts = categoryResult.data.allMarkdownRemark.edges
     const postsPerPage = 10
     const numPages = Math.ceil(categoryPosts.length / postsPerPage)
-    Array.from({ length: numPages }).forEach((_, i) => {
-      const previous =
-        i === 0
-          ? null
-          : i === 1
-          ? `/categories/${category}`
-          : `/categories/${category}/${i}`
-      const next = i + 1 >= numPages ? null : `/categories/${category}/${i + 2}`
-
-      createPage({
-        path:
+    const categoryPagePromises = Array.from({ length: numPages }).map(
+      (_, i) => {
+        const previous =
           i === 0
+            ? null
+            : i === 1
             ? `/categories/${category}`
-            : `/categories/${category}/${i + 1}`,
-        component: path.resolve("./src/templates/blog-category-list.js"),
-        context: {
-          category: category,
-          limit: postsPerPage,
-          skip: i * postsPerPage,
-          numPages,
-          currentPage: i + 1,
-          previous,
-          next,
-        },
-      })
-    })
+            : `/categories/${category}/${i}`
+        const next =
+          i + 1 >= numPages ? null : `/categories/${category}/${i + 2}`
+
+        createPage({
+          path:
+            i === 0
+              ? `/categories/${category}`
+              : `/categories/${category}/${i + 1}`,
+          component: path.resolve("./src/templates/blog-category-list.js"),
+          context: {
+            category: category,
+            limit: postsPerPage,
+            skip: i * postsPerPage,
+            numPages,
+            currentPage: i + 1,
+            previous,
+            next,
+          },
+        })
+      }
+    )
+
+    await Promise.all(categoryPagePromises)
   })
+
+  await Promise.all(promises)
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

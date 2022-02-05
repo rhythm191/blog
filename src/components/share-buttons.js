@@ -2,9 +2,8 @@
  * SNS share buttons
  */
 
-import React from "react"
-
-import { css } from "@emotion/core"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react"
 
 const snsStyle = css`
   display: flex;
