@@ -116,7 +116,6 @@ const snsStyle = css`
 `
 
 const ShareButtons = ({ url, text }) => {
-  console.log(text)
   return (
     <aside css={snsStyle}>
       <a
