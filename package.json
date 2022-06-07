@@ -17,7 +17,7 @@
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
   "dependencies": {
-    "@emotion/react": "^11.7.1",
+    "@emotion/react": "^11.9.0",
     "gatsby": "^4.14.1",
     "gatsby-plugin-emotion": "^7.0.0",
     "gatsby-plugin-feed": "^4.6.0",
