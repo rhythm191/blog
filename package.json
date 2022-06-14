@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "rhyztech_blog",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "rhyztech blog",
   "version": "0.1.0",
   "scripts": {
     "build": "gatsby build",
@@ -9,12 +9,21 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "clean": "gatsby clean"
   },
   "author": "rhythm191",
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/rhythm191/blog/issues"
+  },
+  "homepage": "https://github.com/rhythm191/blog#readme",
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "UNLICENSED",
+  "main": "n/a",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhythm191/blog.git"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
@@ -49,15 +58,5 @@
   },
   "devDependencies": {
     "prettier": "^2.1.2"
-  },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
   }
 }
