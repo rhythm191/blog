@@ -93,9 +93,7 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
+                allMarkdownRemark(sort: { frontmatter: { date: DESC } }) {
                   nodes {
                     excerpt
                     html
@@ -128,7 +126,6 @@ module.exports = {
         icon: `content/assets/rhyztech.png`,
       },
     },
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
