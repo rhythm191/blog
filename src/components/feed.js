@@ -6,13 +6,11 @@
 import { css, jsx } from "@emotion/react"
 import { Link } from "gatsby"
 
-import { rhythm } from "../utils/typography"
-
 const feedStyle = css`
   margin: 3.5rem auto 0;
 
   h3 {
-    margin: 0 auto ${rhythm(1 / 4)};
+    margin: 0 auto 0.4375rem;
   }
 
   .meta {

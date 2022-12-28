@@ -7,11 +7,9 @@ import { css, jsx } from "@emotion/react"
 import { Link } from "gatsby"
 import { useStaticQuery, graphql } from "gatsby"
 
-import { rhythm } from "../utils/typography"
-
 const navStyle = css`
   width: 100%;
-  max-width: ${rhythm(24)};
+  max-width: 42rem;
   margin: 0 auto;
   color: #fff;
 
