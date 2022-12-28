@@ -13,10 +13,7 @@ exports.createPages = async ({ graphql, actions }) => {
             categories
           }
         }
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          limit: 1000
-        ) {
+        allMarkdownRemark(sort: { frontmatter: { date: DESC } }, limit: 1000) {
           edges {
             node {
               fields {
@@ -84,7 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
         query categoryQuery($category: String!) {
           allMarkdownRemark(
             filter: { frontmatter: { category: { eq: $category } } }
-            sort: { fields: [frontmatter___date], order: DESC }
+            sort: { frontmatter: { date: DESC } }
             limit: 1000
           ) {
             edges {

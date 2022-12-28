@@ -80,7 +80,7 @@ export const categoryListQuery = graphql`
     }
     allMarkdownRemark(
       filter: { frontmatter: { category: { eq: $category } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       limit: $limit
       skip: $skip
     ) {
