@@ -6,14 +6,12 @@ import Layout from "../components/layout"
 import Seo from "../components/seo"
 import ShareButtons from "../components/share-buttons"
 
-import { rhythm } from "../utils/typography"
-
 const articleStyle = css`
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.2);
   margin-bottom: 2rem;
 
   h1 {
-    margin: ${rhythm(2)} auto ${rhythm(1 / 4)};
+    margin: 3.5rem auto 0.4375rem;
   }
 
   .meta {

@@ -3,13 +3,11 @@ import { css, jsx } from "@emotion/react"
 import { Link } from "gatsby"
 import Categories from "./categories"
 
-import { rhythm } from "../utils/typography"
-
 const headerStyle = css`
   position: relative;
   width: 100%;
   margin-bottom: 5px;
-  padding: ${rhythm(1)} 0;
+  padding: 1.75rem 0;
   color: #fff;
   background: #1c1c1c;
   box-shadow: 0 3px 2px -2px rgba(0, 0, 0, 0.3);
@@ -31,7 +29,7 @@ const headerStyle = css`
     font-family: Abril Fatface, serif;
     font-size: 3.5rem;
     text-align: center;
-    margin: 0 auto ${rhythm(1.5)};
+    margin: 0 auto 2.625rem;
 
     a {
       color: inherit;
@@ -91,8 +89,8 @@ const Layout = ({ location, title, children }) => {
       <main
         css={css`
           margin: 0 auto;
-          max-width: ${rhythm(28)};
-          padding: 0 ${rhythm(3 / 4)} ${rhythm(1.5)};
+          max-width: 49rem;
+          padding: 0 1.3125rem 2.625rem;
         `}
       >
         {children}
