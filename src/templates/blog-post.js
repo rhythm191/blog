@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from "react"
 import { css, jsx } from "@emotion/react"
 import { Link, graphql } from "gatsby"
 
@@ -50,10 +51,6 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
       <article css={articleStyle}>
         <header>
           <h1>{post.frontmatter.title}</h1>
@@ -120,3 +117,16 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export const Head = ({ data }) => {
+  const post = data.markdownRemark
+
+  return (
+    <>
+      <Seo
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+      />
+    </>
+  )
+}

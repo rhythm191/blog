@@ -126,7 +126,6 @@ module.exports = {
         icon: `content/assets/rhyztech.png`,
       },
     },
-    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-emotion`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline

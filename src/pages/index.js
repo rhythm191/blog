@@ -6,14 +6,19 @@ import Seo from "../components/seo"
 import Feed from "../components/feed"
 import GoogleSearchConsole from "../components/google-search-console"
 
+export const Head = () => (
+  <>
+    <Seo title="Rhyztech blog" />
+    <GoogleSearchConsole />
+  </>
+)
+
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title="Rhyztech blog" />
-      <GoogleSearchConsole />
       {posts.slice(0, 10).map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (

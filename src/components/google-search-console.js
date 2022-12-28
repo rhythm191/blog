@@ -3,7 +3,6 @@
  */
 
 import React from "react"
-import Helmet from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 const GoogleSearchConsole = () => {
@@ -19,13 +18,9 @@ const GoogleSearchConsole = () => {
     `
   )
   return (
-    <Helmet
-      meta={[
-        {
-          name: `google-site-verification`,
-          content: site.siteMetadata.googleSiteVerification,
-        },
-      ]}
+    <meta
+      name="google-site-verification"
+      content={site.siteMetadata.googleSiteVerification}
     />
   )
 }

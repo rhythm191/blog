@@ -1,4 +1,5 @@
 /** @jsx jsx */
+import React from "react"
 import { css, jsx } from "@emotion/react"
 import { Link, graphql } from "gatsby"
 
@@ -20,11 +21,10 @@ const navStyle = css`
 const BlogList = ({ data, pageContext, location }) => {
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
-  const { category, currentPage, previous, next } = pageContext
+  const { previous, next } = pageContext
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Seo title={`${category} page ${currentPage}`} />
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
@@ -101,3 +101,13 @@ export const categoryListQuery = graphql`
     }
   }
 `
+
+export const Head = ({ pageContext }) => {
+  const { category, currentPage } = pageContext
+
+  return (
+    <>
+      <Seo title={`${category} page ${currentPage}`} />
+    </>
+  )
+}
